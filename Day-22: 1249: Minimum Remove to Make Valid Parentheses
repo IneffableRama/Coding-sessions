@@ -1,0 +1,23 @@
+class Solution(object):
+    def minRemoveToMakeValid(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s_list = list(s)
+        stack = []
+        
+        for i, char in enumerate(s_list):
+            if char == '(':
+                stack.append(i)
+            elif char == ')':
+                if stack:
+                    stack.pop()
+                else:
+                    s_list[i] = ''
+
+        while stack:
+            idx = stack.pop()
+            s_list[idx] = ''
+
+        return ''.join(s_list)
