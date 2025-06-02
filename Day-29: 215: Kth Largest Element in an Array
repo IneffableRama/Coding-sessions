@@ -25,3 +25,11 @@ class Solution(object):
                 return quickselect(left, store_index - 1, k_smallest)
         n = len(nums)
         return quickselect(0, n - 1, n - k)
+
+# Or this code also work for avoiding time limit exceeded
+
+import heapq
+
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        return heapq.nlargest(k, nums)[-1]
