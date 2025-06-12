@@ -1,0 +1,21 @@
+class Solution:
+    def sortedListToBST(self, head):
+        curr, count = head, 0
+        while curr:
+            curr = curr.next
+            count += 1
+        
+        curr = [head]
+        
+        def treeify(i, j):
+            if i > j:
+                return None
+            mid = (i + j) >> 1
+            left = treeify(i, mid - 1)
+            node = TreeNode(curr[0].val)
+            node.left = left
+            curr[0] = curr[0].next
+            node.right = treeify(mid + 1, j)
+            return node
+        
+        return treeify(0, count - 1)
