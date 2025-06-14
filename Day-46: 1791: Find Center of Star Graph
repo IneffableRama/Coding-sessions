@@ -1,0 +1,13 @@
+class Solution(object):
+    def findCenter(self, edges):
+        """
+        :type edges: List[List[int]]
+        :rtype: int
+        """
+        first_edge = edges[0]
+        second_edge = edges[1]
+
+        if first_edge[0] == second_edge[0] or first_edge[0] == second_edge[1]:
+            return first_edge[0]
+        else:
+            return first_edge[1]
