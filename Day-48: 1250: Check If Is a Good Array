@@ -1,0 +1,19 @@
+class Solution(object):
+    def isGoodArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if not nums:
+            return False
+        
+        current_gcd = nums[0]
+        for num in nums[1:]:
+            a, b = current_gcd, num
+            while b:
+                a, b = b, a % b
+            current_gcd = a
+            if current_gcd == 1:
+                break
+
+        return current_gcd == 1
